@@ -33,6 +33,13 @@ class BookingTransactionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) BookingTransaction::where('is_paid', false)->count();
+    }
+
+    protected static ?string $navigationGroup = 'Customer';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -108,6 +115,7 @@ class BookingTransactionResource extends Resource
                     ->skippable()
             ]);
     }
+
 
     public static function table(Table $table): Table
     {

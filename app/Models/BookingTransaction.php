@@ -28,7 +28,7 @@ class BookingTransaction extends Model
         'started_at' => 'date'
     ];
 
-    public function generateUniqueTrxId()
+    public static function generateUniqueTrxId()
     {
         $prefix = 'JRT';
         do {

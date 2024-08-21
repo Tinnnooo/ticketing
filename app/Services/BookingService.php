@@ -24,7 +24,7 @@ class BookingService
         $price = $this->ticketRepository->getPrice($ticketId);
 
         $subTotal = $totalParicipant * $price;
-        $totalPpn = $ppn & $subTotal;
+        $totalPpn = $ppn * $subTotal;
         $totalAmount = $subTotal + $totalPpn;
 
         return [
@@ -78,7 +78,7 @@ class BookingService
             $validated['total_amount'] = $booking['total_amount'];
             $validated['ticket_id'] = $booking['ticket_id'];
             $validated['is_paid'] = false;
-            $validated['booking_trx_id'] = BookingTransaction::generateUniqueId();
+            $validated['booking_trx_id'] = BookingTransaction::generateUniqueTrxId();
 
             $newBooking = $this->bookingRepository->createBooking($validated);
 
@@ -86,5 +86,10 @@ class BookingService
         });
 
         return $bookingTransactionId;
+    }
+
+    public function getBookingDetails(array $validated)
+    {
+        return $this->bookingRepository->findByTrxIdAndPhoneNumber($validated['booking_trx_id'], $validated['phone_number']);
     }
 }

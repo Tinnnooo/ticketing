@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ asset('output.css') }}" rel="stylesheet">
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -28,7 +28,7 @@
         </div>
         <form method="POST" action="{{ route('front.booking_store', $ticket->slug) }}" class="relative flex flex-col w-full px-4 gap-[18px] mt-5 pb-[30px] overflow-x-hidden">
             @csrf
-            <div class="flex items-center justify-between rounded-3xl p-[6px] pr-[14px] bg-white overflow-hidden">
+            <div class= "flex items-center justify-between rounded-3xl p-[6px] pr-[14px] bg-white overflow-hidden">
                 <div class="flex items-center gap-[14px]">
                     <div class="flex w-[90px] h-[90px] shrink-0 rounded-3xl bg-[#D9D9D9] overflow-hidden">
                         <img src="{{ Storage::url($ticket->thumbnail) }}" class="w-full h-full object-cover" alt="thumbnail">
